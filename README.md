@@ -16,6 +16,13 @@ All assets also open but be sure to see the License below, because we use third 
  <br />
 I am not an artist, so assets contribution like 3D Models, Animations, Music, VFX, SFX, Level Design, UI, etc would be much appreciated.
 
+## Donation:
+You can donate to this project using Support button on top of this page or right sidebar.
+All donations will be used to:
+1. Pay [sriedi7](https://github.com/sriedi7) to maintain the repository and regularly contribute code.
+2. Pay major contributor.
+3. Purchase assets if needed.
+
 ## Licenses:
 For more information please see the [License page](https://github.com/AureaFUNSoft/SomniumRevise/wiki/Licenses)
 
