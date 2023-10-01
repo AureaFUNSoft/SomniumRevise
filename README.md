@@ -10,12 +10,12 @@ I made this for Godot Engine Showcase Public Project
 * 3D Editor: [Blender 3D](https://www.blender.org/)
 
 ## Contribution:
-Contribution is welcome.
-For code and assets contribution, please be aware that your contribution is made available for people to reuse even for commercial purpose.
+Contribution is welcome. <br />
+For code and assets contribution, please be aware that your contribution is made available for people to reuse even for commercial purpose. <br />
 All assets also open but be sure to see the License below, because we use third party tools to create some of the assets.
 
 ## Licenses:
-
+For more information please see the [License page](https://github.com/AureaFUNSoft/SomniumRevise/wiki/Licenses)
 
 ## Documents:
-For more information please see the WIKI
+For more information please see the [WIKI](https://github.com/AureaFUNSoft/SomniumRevise/wiki)
