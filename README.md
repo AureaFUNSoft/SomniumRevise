@@ -20,7 +20,7 @@ I am not an artist, so assets contribution like 3D Models, Animations, Music, VF
 You can donate to this project using Support button on top of this page or right sidebar.
 All donations will be used to:
 1. Pay [sriedi7](https://github.com/sriedi7) to maintain the repository and regularly contribute code.
-2. Pay major contributor.
+2. Pay major contributors.
 3. Purchase assets if needed.
 
 ## Licenses:
