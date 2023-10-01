@@ -12,7 +12,9 @@ I made this for Godot Engine Showcase Public Project
 ## Contribution:
 Contribution is welcome. <br />
 For code and assets contribution, please be aware that your contribution is made available for people to reuse even for commercial purpose. <br />
-All assets also open but be sure to see the License below, because we use third party tools to create some of the assets.
+All assets also open but be sure to see the License below, because we use third party tools to create some of the assets. <br />
+ <br />
+I am not an artist, so assets contribution like 3D Models, Animations, Music, VFX, SFX, Level Design, UI, etc would be much appreciated.
 
 ## Licenses:
 For more information please see the [License page](https://github.com/AureaFUNSoft/SomniumRevise/wiki/Licenses)
