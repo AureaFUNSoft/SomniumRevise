@@ -8,6 +8,7 @@ I made this for Godot Engine Showcase Public Project
 * Character Creation: [VRoid Studio](https://vroid.com/en/studio)
 * Motion Data: [Mixamo](https://www.mixamo.com/)
 * 3D Editor: [Blender 3D](https://www.blender.org/)
+* VFX: [Effekseer](https://effekseer.github.io/en/index.html)
 
 ## Contribution:
 Contribution is welcome. <br />
