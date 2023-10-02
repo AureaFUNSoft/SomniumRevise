@@ -14,8 +14,8 @@ If you want to open this, make sure to enable blender import and also set the bl
 * 3D Editor: [Blender 3D](https://www.blender.org/)
 * VFX: [Effekseer](https://effekseer.github.io/en/index.html)
 
-Some of the software that I use here are free and open source like blender and effekseer, and they are really capable of doing some impressive works.
-Also VRoid, is not an open source project, but it is a very powerful tool to create anime style character.
+Some of the software that I use here are free and open source like blender and effekseer, and they are really capable of doing some impressive works.<br />
+Also VRoid, is a free tool. Although it is not an open source project, but it is a very powerful tool to create anime style character.
 
 ## Contribution:
 Contribution is welcome. <br />
