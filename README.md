@@ -1,5 +1,6 @@
 # SomniumRevise
 Anime Style hack and slash 3D game made with Godot
+![Screenshot from 2023-10-02 22-58-45](https://github.com/AureaFUNSoft/SomniumRevise/assets/8875839/675b893d-5b0f-4b38-9833-8db89150f3b2)
 
 I made this for Godot Engine Showcase Public Project
 
