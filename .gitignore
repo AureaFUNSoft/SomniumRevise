@@ -13,3 +13,6 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Linux temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
