@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://bt7f8e5y6ne3f"]
+
+[ext_resource type="Script" path="res://scripts/basic_behaviour.gd" id="1_j1ylg"]
+[ext_resource type="Script" path="res://scripts/actions/change_scene_action.gd" id="2_5cuw5"]
+[ext_resource type="PackedScene" uid="uid://dw36jpmia1ecl" path="res://scenes/gameplay.tscn" id="3_re6fk"]
+[ext_resource type="Script" path="res://scripts/actions/quit_action.gd" id="4_p8n5h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ikpl"]
+font_size = 110
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.160784)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.286275, 0.286275, 0.286275, 1)
+
+[node name="VList" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="VBoxContainer" parent="VList"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+alignment = 2
+
+[node name="Label" type="Label" parent="VList/Title"]
+layout_mode = 2
+text = "Somnium Revise"
+label_settings = SubResource("LabelSettings_0ikpl")
+horizontal_alignment = 1
+
+[node name="Menu" type="VBoxContainer" parent="VList"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+alignment = 1
+
+[node name="New" type="Button" parent="VList/Menu"]
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "New Game"
+
+[node name="PressBehaviour" type="Node" parent="VList/Menu/New"]
+script = ExtResource("1_j1ylg")
+signal_name = "pressed"
+
+[node name="ChangeSceneAction" type="Node" parent="VList/Menu/New/PressBehaviour"]
+script = ExtResource("2_5cuw5")
+scene_file = ExtResource("3_re6fk")
+
+[node name="Quit" type="Button" parent="VList/Menu"]
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "Quit Game"
+
+[node name="PressBehaviour" type="Node" parent="VList/Menu/Quit"]
+script = ExtResource("1_j1ylg")
+signal_name = "pressed"
+
+[node name="QuitAction" type="Node" parent="VList/Menu/Quit/PressBehaviour"]
+script = ExtResource("4_p8n5h")
+
+[node name="Footer" type="VBoxContainer" parent="VList"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="VList/Footer"]
+layout_mode = 2
+text = "Godot 4 Open Project"
+horizontal_alignment = 1

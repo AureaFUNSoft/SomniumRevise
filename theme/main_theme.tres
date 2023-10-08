@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://br56e8fo5m4h6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q4s03"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7dkr"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+draw_center = false
+border_width_left = 2
+border_width_right = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rpsne"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0s751"]
+
+[resource]
+MainMenuButton/base_type = &"Button"
+MainMenuButton/colors/font_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/font_sizes/font_size = 13
+MainMenuButton/styles/focus = SubResource("StyleBoxEmpty_q4s03")
+MainMenuButton/styles/hover = SubResource("StyleBoxFlat_d7dkr")
+MainMenuButton/styles/normal = SubResource("StyleBoxEmpty_rpsne")
+MainMenuButton/styles/pressed = SubResource("StyleBoxEmpty_0s751")
