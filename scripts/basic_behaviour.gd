@@ -5,6 +5,9 @@ extends Node
 @export var node_target: Node
 @export var signal_name: String = ""
 
+@export_category("Action")
+@export var actions: Array[BasicAction]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var target_node = get_parent()
@@ -12,8 +15,9 @@ func _ready():
 		target_node = node_target
 	if !signal_name.is_empty():
 		target_node.connect(signal_name,do_action)
+	for action in actions:
+		action.node = self
 
 func do_action():
-	var child0 = get_child(0)
-	if child0 is BasicAction:
-		child0.do_action()
+	for action in actions:
+		action.do_action()

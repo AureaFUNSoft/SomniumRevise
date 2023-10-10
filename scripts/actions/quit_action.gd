@@ -2,4 +2,7 @@ class_name QuitAction
 extends BasicAction
 
 func do_action():
-	get_tree().quit()
+	if node == null:
+		return
+	node.get_tree().quit()
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt7f8e5y6ne3f"]
+[gd_scene load_steps=8 format=3 uid="uid://bt7f8e5y6ne3f"]
 
 [ext_resource type="Script" path="res://scripts/basic_behaviour.gd" id="1_j1ylg"]
 [ext_resource type="Script" path="res://scripts/actions/change_scene_action.gd" id="2_5cuw5"]
@@ -9,6 +9,13 @@
 font_size = 110
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.160784)
+
+[sub_resource type="Resource" id="Resource_7xlvy"]
+script = ExtResource("2_5cuw5")
+scene_file = ExtResource("3_re6fk")
+
+[sub_resource type="Resource" id="Resource_ytl48"]
+script = ExtResource("4_p8n5h")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -62,10 +69,7 @@ text = "New Game"
 [node name="PressBehaviour" type="Node" parent="VList/Menu/New"]
 script = ExtResource("1_j1ylg")
 signal_name = "pressed"
-
-[node name="ChangeSceneAction" type="Node" parent="VList/Menu/New/PressBehaviour"]
-script = ExtResource("2_5cuw5")
-scene_file = ExtResource("3_re6fk")
+actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_7xlvy")])
 
 [node name="Quit" type="Button" parent="VList/Menu"]
 layout_mode = 2
@@ -75,9 +79,7 @@ text = "Quit Game"
 [node name="PressBehaviour" type="Node" parent="VList/Menu/Quit"]
 script = ExtResource("1_j1ylg")
 signal_name = "pressed"
-
-[node name="QuitAction" type="Node" parent="VList/Menu/Quit/PressBehaviour"]
-script = ExtResource("4_p8n5h")
+actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_ytl48")])
 
 [node name="Footer" type="VBoxContainer" parent="VList"]
 layout_mode = 2
