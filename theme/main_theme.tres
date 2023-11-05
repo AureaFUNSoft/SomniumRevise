@@ -1,4 +1,12 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://br56e8fo5m4h6"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://br56e8fo5m4h6"]
+
+[ext_resource type="FontFile" uid="uid://dfo1cd5ttk841" path="res://fonts/la-solid-900.ttf" id="1_gml6r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rifly"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ff4yp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyd8r"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q4s03"]
 
@@ -15,7 +23,86 @@ content_margin_right = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0s751"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s0ht2"]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oggkg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pddt"]
+bg_color = Color(1, 1, 1, 0.8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1lh8"]
+bg_color = Color(1, 1, 1, 0.8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0pakt"]
+bg_color = Color(1, 1, 1, 0.8)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qv8o8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_etxcq"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.5)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wge0"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.5)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.51)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0pmk"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.5)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrw0h"]
+bg_color = Color(1, 1, 1, 0.5)
+
 [resource]
+BasicMarginContainer/base_type = &"MarginContainer"
+BasicMarginContainer/constants/margin_bottom = 10
+BasicMarginContainer/constants/margin_left = 20
+BasicMarginContainer/constants/margin_right = 20
+BasicMarginContainer/constants/margin_top = 10
+ClearHSeparator/base_type = &"HSeparator"
+ClearHSeparator/constants/separation = 10
+ClearHSeparator/styles/separator = SubResource("StyleBoxEmpty_rifly")
+ClearPanelContainer/base_type = &"PanelContainer"
+ClearPanelContainer/styles/panel = SubResource("StyleBoxEmpty_ff4yp")
+ClearVSeparator/base_type = &"VSeparator"
+ClearVSeparator/constants/separation = 10
+ClearVSeparator/styles/separator = SubResource("StyleBoxEmpty_xyd8r")
+IconButton/base_type = &"Button"
+IconButton/font_sizes/font_size = 24
+IconButton/fonts/font = ExtResource("1_gml6r")
+IconLabel/base_type = &"Label"
+IconLabel/colors/font_color = Color(1, 1, 1, 1)
+IconLabel/font_sizes/font_size = 30
+IconLabel/fonts/font = ExtResource("1_gml6r")
+IconLabelNegative/base_type = &"Label"
+IconLabelNegative/colors/font_color = Color(0, 0, 0, 1)
+IconLabelNegative/font_sizes/font_size = 30
+IconLabelNegative/fonts/font = ExtResource("1_gml6r")
 MainMenuButton/base_type = &"Button"
 MainMenuButton/colors/font_color = Color(0, 0, 0, 1)
 MainMenuButton/colors/font_focus_color = Color(0, 0, 0, 1)
@@ -25,3 +112,32 @@ MainMenuButton/styles/focus = SubResource("StyleBoxEmpty_q4s03")
 MainMenuButton/styles/hover = SubResource("StyleBoxFlat_d7dkr")
 MainMenuButton/styles/normal = SubResource("StyleBoxEmpty_rpsne")
 MainMenuButton/styles/pressed = SubResource("StyleBoxEmpty_0s751")
+NegativeLabel/base_type = &"Label"
+NegativeLabel/colors/font_color = Color(0, 0, 0, 1)
+NegativeLabel/styles/normal = SubResource("StyleBoxEmpty_s0ht2")
+NegativeOption/base_type = &"OptionButton"
+NegativeOption/colors/font_color = Color(0, 0, 0, 1)
+NegativeOption/colors/font_focus_color = Color(0, 0, 0, 1)
+NegativeOption/colors/font_hover_color = Color(0, 0, 0, 1)
+NegativeOption/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+NegativeOption/colors/font_pressed_color = Color(0, 0, 0, 1)
+NegativeOption/constants/arrow_margin = 10
+NegativeOption/constants/modulate_arrow = 1
+NegativeOption/styles/focus = SubResource("StyleBoxEmpty_oggkg")
+NegativeOption/styles/hover = SubResource("StyleBoxFlat_4pddt")
+NegativeOption/styles/normal = SubResource("StyleBoxFlat_e1lh8")
+NegativeOption/styles/pressed = SubResource("StyleBoxFlat_0pakt")
+SettingItemButton/base_type = &"Button"
+SettingItemButton/styles/focus = SubResource("StyleBoxEmpty_qv8o8")
+SettingItemButton/styles/hover = SubResource("StyleBoxFlat_etxcq")
+SettingItemButton/styles/normal = SubResource("StyleBoxFlat_2wge0")
+SettingItemButton/styles/pressed = SubResource("StyleBoxFlat_p0pmk")
+SettingItemVBox/base_type = &"VBoxContainer"
+SettingItemVBox/constants/separation = 10
+SmallMarginContainer/base_type = &"MarginContainer"
+SmallMarginContainer/constants/margin_bottom = 10
+SmallMarginContainer/constants/margin_left = 10
+SmallMarginContainer/constants/margin_right = 10
+SmallMarginContainer/constants/margin_top = 10
+TransparentPanelContainer/base_type = &"PanelContainer"
+TransparentPanelContainer/styles/panel = SubResource("StyleBoxFlat_wrw0h")

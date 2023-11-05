@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://b87h3psugsprm"]
+
+[ext_resource type="PackedScene" uid="uid://bav227xval002" path="res://objects/gui/base_setting_item.tscn" id="1_ogh7q"]
+[ext_resource type="Script" path="res://scripts/node_extensions/hslider_extended.gd" id="2_h17bl"]
+
+[node name="Resolution" instance=ExtResource("1_ogh7q")]
+offset_right = 617.0
+offset_bottom = 52.0
+
+[node name="Panel" parent="List" index="1"]
+theme_type_variation = &"TransparentPanelContainer"
+
+[node name="Content" type="HBoxContainer" parent="List/Panel" index="0"]
+layout_mode = 2
+
+[node name="Icon" type="Label" parent="List/Panel/Content" index="0"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_type_variation = &"IconLabelNegative"
+text = ""
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="List/Panel/Content" index="1" node_paths=PackedStringArray("value_label")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+script = ExtResource("2_h17bl")
+value_label = NodePath("../Value")
+
+[node name="Value" type="Label" parent="List/Panel/Content" index="2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_type_variation = &"NegativeLabel"
+text = "-1"
+horizontal_alignment = 1

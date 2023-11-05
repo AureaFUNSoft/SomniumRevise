@@ -1,7 +1,6 @@
-class_name QuitAction
+class_name ChangeVSyncAction
 extends BasicAction
 
 func do_action(behaviour, parameters = {}):
 	super.do_action(behaviour)
-	node.get_tree().quit()
-	
+	DisplayServer.window_set_vsync_mode(parameters.index)

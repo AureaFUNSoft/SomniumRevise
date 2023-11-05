@@ -15,6 +15,11 @@ run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Settings="*res://autoloads/settings.tscn"
+BGMManager="*res://objects/autoloads/bgm_manager.tscn"
+
 [gui]
 
 theme/custom="res://theme/main_theme.tres"

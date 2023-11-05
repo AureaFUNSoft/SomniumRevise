@@ -1,0 +1,394 @@
+[gd_scene load_steps=41 format=3 uid="uid://b8x7vawfpbf7s"]
+
+[ext_resource type="Texture2D" uid="uid://bskw85lr507a3" path="res://local_only/setting_reference_1.png" id="1_86nja"]
+[ext_resource type="PackedScene" uid="uid://1sm45tjoiu5q" path="res://objects/gui/option_setting_item.tscn" id="2_pld3d"]
+[ext_resource type="Script" path="res://scripts/basic_behaviour.gd" id="3_l2wmy"]
+[ext_resource type="Script" path="res://scripts/actions/node_object_target.gd" id="4_3tidd"]
+[ext_resource type="Script" path="res://scripts/actions/signal_target.gd" id="4_mi6ho"]
+[ext_resource type="Script" path="res://scripts/actions/node_action.gd" id="6_wn1tw"]
+[ext_resource type="Script" path="res://scripts/node_utils/button_group_manager.gd" id="6_xxsdp"]
+[ext_resource type="PackedScene" uid="uid://b87h3psugsprm" path="res://objects/gui/slider_setting_item.tscn" id="7_l2l0g"]
+[ext_resource type="Script" path="res://scripts/resources/option_lists/resolution_list.gd" id="9_is7be"]
+[ext_resource type="Script" path="res://scripts/actions/change_fullscreen_action.gd" id="10_h8ol1"]
+[ext_resource type="Script" path="res://scripts/resources/option_lists/generic_list.gd" id="10_y2rhl"]
+[ext_resource type="Script" path="res://scripts/actions/change_fps_action.gd" id="11_35rl1"]
+[ext_resource type="Script" path="res://scripts/actions/change_vsync_action.gd" id="11_rpccq"]
+[ext_resource type="Script" path="res://scripts/actions/change_audio_volume_action.gd" id="13_7qmrc"]
+[ext_resource type="Script" path="res://scripts/actions/change_ssaa_action.gd" id="13_ghmwe"]
+[ext_resource type="Script" path="res://scripts/actions/change_taa_action.gd" id="14_r2nwi"]
+[ext_resource type="Script" path="res://scripts/actions/change_msaa_action.gd" id="15_15qr4"]
+
+[sub_resource type="Resource" id="Resource_ap47p"]
+script = ExtResource("4_3tidd")
+target_node = NodePath("../Panel")
+
+[sub_resource type="Resource" id="Resource_doyyb"]
+script = ExtResource("4_mi6ho")
+signal_name = "ready"
+object_target = SubResource("Resource_ap47p")
+
+[sub_resource type="Resource" id="Resource_ei20f"]
+script = ExtResource("6_wn1tw")
+node_action = NodePath("../Panel")
+method_name = "hide"
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_qh0gu"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ostch"]
+viewport_path = NodePath("Panel/Margin/VList/Content/List/List/Graphics/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_paxqm"]
+viewport_path = NodePath("Panel/Margin/VList/Content/List/List/Sounds/SubViewport")
+
+[sub_resource type="Resource" id="Resource_rsbcc"]
+script = ExtResource("9_is7be")
+resolution_scales = PackedFloat32Array(1, 0.8, 0.6)
+
+[sub_resource type="Resource" id="Resource_kk5y1"]
+script = ExtResource("10_h8ol1")
+
+[sub_resource type="Resource" id="Resource_vf4p2"]
+script = ExtResource("10_y2rhl")
+lists = ["Fullscreen", "Windowed"]
+default_index = 1
+action = SubResource("Resource_kk5y1")
+
+[sub_resource type="Resource" id="Resource_ec7d0"]
+script = ExtResource("11_rpccq")
+
+[sub_resource type="Resource" id="Resource_vpn3m"]
+script = ExtResource("10_y2rhl")
+lists = ["Disabled", "Enabled"]
+default_index = 1
+action = SubResource("Resource_ec7d0")
+
+[sub_resource type="Resource" id="Resource_n6ie3"]
+script = ExtResource("11_35rl1")
+
+[sub_resource type="Resource" id="Resource_whm82"]
+script = ExtResource("10_y2rhl")
+lists = ["Unlimited", 120, 60, 50, 30, 24]
+default_index = 0
+action = SubResource("Resource_n6ie3")
+
+[sub_resource type="Resource" id="Resource_0f014"]
+script = ExtResource("13_ghmwe")
+
+[sub_resource type="Resource" id="Resource_el481"]
+script = ExtResource("10_y2rhl")
+lists = ["Disabled", "Enabled"]
+default_index = 0
+action = SubResource("Resource_0f014")
+
+[sub_resource type="Resource" id="Resource_m8mx5"]
+script = ExtResource("14_r2nwi")
+
+[sub_resource type="Resource" id="Resource_q2m2n"]
+script = ExtResource("10_y2rhl")
+lists = ["Disabled", "Enabled"]
+default_index = 0
+action = SubResource("Resource_m8mx5")
+
+[sub_resource type="Resource" id="Resource_6wu3p"]
+script = ExtResource("15_15qr4")
+
+[sub_resource type="Resource" id="Resource_lnxm6"]
+script = ExtResource("10_y2rhl")
+lists = ["Disabled", "2x", "4x", "8x"]
+default_index = 0
+action = SubResource("Resource_6wu3p")
+
+[sub_resource type="Resource" id="Resource_g40fw"]
+script = ExtResource("13_7qmrc")
+bus_name = "Master"
+
+[sub_resource type="Resource" id="Resource_vn7ax"]
+script = ExtResource("13_7qmrc")
+bus_name = "BGM"
+
+[sub_resource type="Resource" id="Resource_k3ilw"]
+script = ExtResource("13_7qmrc")
+bus_name = "SFX"
+
+[sub_resource type="Resource" id="Resource_oxog3"]
+script = ExtResource("13_7qmrc")
+bus_name = "Voice"
+
+[node name="Settings" type="CanvasLayer"]
+
+[node name="HideOnReady" type="Node" parent="."]
+script = ExtResource("3_l2wmy")
+target = SubResource("Resource_doyyb")
+action = SubResource("Resource_ei20f")
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ClearPanelContainer"
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.31)
+
+[node name="Reference" type="TextureRect" parent="Panel"]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_86nja")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_type_variation = &"BasicMarginContainer"
+
+[node name="VList" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+
+[node name="Title" type="HBoxContainer" parent="Panel/Margin/VList"]
+layout_mode = 2
+
+[node name="Icon" type="Label" parent="Panel/Margin/VList/Title"]
+layout_mode = 2
+theme_type_variation = &"IconLabel"
+text = ""
+
+[node name="Title" type="Label" parent="Panel/Margin/VList/Title"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Close" type="Button" parent="Panel/Margin/VList/Title"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_type_variation = &"IconButton"
+text = ""
+flat = true
+
+[node name="HSeparator" type="HSeparator" parent="Panel/Margin/VList"]
+layout_mode = 2
+theme_type_variation = &"ClearHSeparator"
+
+[node name="Content" type="PanelContainer" parent="Panel/Margin/VList"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"ClearPanelContainer"
+
+[node name="List" type="HBoxContainer" parent="Panel/Margin/VList/Content"]
+layout_mode = 2
+
+[node name="List" type="VBoxContainer" parent="Panel/Margin/VList/Content/List"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SettingItemVBox"
+script = ExtResource("6_xxsdp")
+button_group = SubResource("ButtonGroup_qh0gu")
+
+[node name="Graphics" type="Button" parent="Panel/Margin/VList/Content/List/List"]
+layout_mode = 2
+theme_type_variation = &"SettingItemButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_qh0gu")
+text = "Graphics"
+icon = SubResource("ViewportTexture_ostch")
+alignment = 0
+
+[node name="SubViewport" type="SubViewport" parent="Panel/Margin/VList/Content/List/List/Graphics"]
+transparent_bg = true
+size = Vector2i(32, 32)
+
+[node name="Label" type="Label" parent="Panel/Margin/VList/Content/List/List/Graphics/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"IconLabel"
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sounds" type="Button" parent="Panel/Margin/VList/Content/List/List"]
+layout_mode = 2
+theme_type_variation = &"SettingItemButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_qh0gu")
+text = "Sounds"
+icon = SubResource("ViewportTexture_paxqm")
+alignment = 0
+
+[node name="SubViewport" type="SubViewport" parent="Panel/Margin/VList/Content/List/List/Sounds"]
+transparent_bg = true
+size = Vector2i(32, 32)
+
+[node name="Label" type="Label" parent="Panel/Margin/VList/Content/List/List/Sounds/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"IconLabel"
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Panel/Margin/VList/Content/List"]
+layout_mode = 2
+theme_type_variation = &"ClearVSeparator"
+
+[node name="TabContainer" type="TabContainer" parent="Panel/Margin/VList/Content/List"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+tabs_visible = false
+
+[node name="Graphics" type="PanelContainer" parent="Panel/Margin/VList/Content/List/TabContainer"]
+layout_mode = 2
+
+[node name="List" type="VBoxContainer" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics"]
+layout_mode = 2
+theme_type_variation = &"SettingItemVBox"
+
+[node name="Resolution" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List" instance=ExtResource("2_pld3d")]
+layout_mode = 2
+
+[node name="OptionButton" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/Resolution/List/Panel" index="0"]
+option_list = SubResource("Resource_rsbcc")
+
+[node name="WindowMode" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List" instance=ExtResource("2_pld3d")]
+layout_mode = 2
+
+[node name="Label" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/WindowMode/List" index="0"]
+text = "Window Mode"
+
+[node name="OptionButton" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/WindowMode/List/Panel" index="0"]
+item_count = 2
+popup/item_0/text = "Windowed"
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+option_list = SubResource("Resource_vf4p2")
+
+[node name="VSync" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List" instance=ExtResource("2_pld3d")]
+layout_mode = 2
+
+[node name="Label" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/VSync/List" index="0"]
+text = "V-Sync"
+
+[node name="OptionButton" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/VSync/List/Panel" index="0"]
+item_count = 2
+popup/item_0/text = "60"
+popup/item_1/text = "30"
+popup/item_1/id = 1
+option_list = SubResource("Resource_vpn3m")
+
+[node name="FrameRate" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List" instance=ExtResource("2_pld3d")]
+layout_mode = 2
+
+[node name="Label" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/FrameRate/List" index="0"]
+text = "FPS"
+
+[node name="OptionButton" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/FrameRate/List/Panel" index="0"]
+item_count = 2
+popup/item_0/text = "60"
+popup/item_1/text = "30"
+popup/item_1/id = 1
+option_list = SubResource("Resource_whm82")
+
+[node name="FXAA" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List" instance=ExtResource("2_pld3d")]
+layout_mode = 2
+
+[node name="Label" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/FXAA/List" index="0"]
+text = "FXAA"
+
+[node name="OptionButton" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/FXAA/List/Panel" index="0"]
+item_count = 2
+popup/item_0/text = "Disabled"
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+option_list = SubResource("Resource_el481")
+
+[node name="TAA" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List" instance=ExtResource("2_pld3d")]
+layout_mode = 2
+
+[node name="Label" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/TAA/List" index="0"]
+text = "TAA"
+
+[node name="OptionButton" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/TAA/List/Panel" index="0"]
+item_count = 2
+popup/item_0/text = "Disabled"
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+option_list = SubResource("Resource_q2m2n")
+
+[node name="MSAA" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List" instance=ExtResource("2_pld3d")]
+layout_mode = 2
+
+[node name="Label" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/MSAA/List" index="0"]
+text = "MSAA"
+
+[node name="OptionButton" parent="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/MSAA/List/Panel" index="0"]
+item_count = 2
+popup/item_0/text = "Disabled"
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+option_list = SubResource("Resource_lnxm6")
+
+[node name="Sounds" type="PanelContainer" parent="Panel/Margin/VList/Content/List/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="List" type="VBoxContainer" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds"]
+layout_mode = 2
+theme_type_variation = &"SettingItemVBox"
+
+[node name="Master" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List" instance=ExtResource("7_l2l0g")]
+layout_mode = 2
+
+[node name="Label" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/Master/List" index="0"]
+text = "Master Volume"
+
+[node name="Slider" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/Master/List/Panel/Content" index="1"]
+actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_g40fw")])
+
+[node name="BGM" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List" instance=ExtResource("7_l2l0g")]
+layout_mode = 2
+
+[node name="Label" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/BGM/List" index="0"]
+text = "BGM Volume"
+
+[node name="Slider" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/BGM/List/Panel/Content" index="1"]
+actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_vn7ax")])
+
+[node name="SFX" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List" instance=ExtResource("7_l2l0g")]
+layout_mode = 2
+
+[node name="Label" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/SFX/List" index="0"]
+text = "SFX Volume"
+
+[node name="Slider" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/SFX/List/Panel/Content" index="1"]
+actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_k3ilw")])
+
+[node name="Voice" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List" instance=ExtResource("7_l2l0g")]
+layout_mode = 2
+
+[node name="Label" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/Voice/List" index="0"]
+text = "Voice Volume"
+
+[node name="Slider" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/Voice/List/Panel/Content" index="1"]
+actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_oxog3")])
+
+[connection signal="pressed" from="Panel/Margin/VList/Title/Close" to="Panel" method="hide"]
+[connection signal="button_pressed_index" from="Panel/Margin/VList/Content/List/List" to="Panel/Margin/VList/Content/List/TabContainer" method="set_current_tab"]
+
+[editable path="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/Resolution"]
+[editable path="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/WindowMode"]
+[editable path="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/VSync"]
+[editable path="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/FrameRate"]
+[editable path="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/FXAA"]
+[editable path="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/TAA"]
+[editable path="Panel/Margin/VList/Content/List/TabContainer/Graphics/List/MSAA"]
+[editable path="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/Master"]
+[editable path="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/BGM"]
+[editable path="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/SFX"]
+[editable path="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/Voice"]

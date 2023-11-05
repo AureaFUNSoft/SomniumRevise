@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bav227xval002"]
+
+[node name="Resolution" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 52)
+theme_type_variation = &"TransparentPanelContainer"
+
+[node name="List" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="List"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"NegativeLabel"
+text = "Resolution"
+
+[node name="Panel" type="PanelContainer" parent="List"]
+layout_mode = 2
+size_flags_horizontal = 3

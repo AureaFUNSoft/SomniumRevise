@@ -1,8 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw36jpmia1ecl"]
+[gd_scene load_steps=21 format=3 uid="uid://dw36jpmia1ecl"]
 
 [ext_resource type="PackedScene" uid="uid://sy2fhc6wmx54" path="res://objects/player.tscn" id="1_valqr"]
 [ext_resource type="Texture2D" uid="uid://b1hxts2380c43" path="res://textures/checker.png" id="2_brdaw"]
 [ext_resource type="Script" path="res://scripts/fps_counter.gd" id="3_rhvj1"]
+[ext_resource type="Script" path="res://scripts/basic_behaviour.gd" id="4_hoy1v"]
+[ext_resource type="Script" path="res://scripts/actions/signal_target.gd" id="5_iwxe8"]
+[ext_resource type="Script" path="res://scripts/actions/change_scene_action.gd" id="7_4ms41"]
+[ext_resource type="Script" path="res://scripts/actions/singleton_action.gd" id="7_5gi0r"]
+[ext_resource type="AudioStream" uid="uid://b6h8vk5hbglnn" path="res://audio/music/song21_0.ogg" id="8_0wa5c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r4o3s"]
 
@@ -25,6 +30,36 @@ size = Vector2(50, 50)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4iybn"]
 data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
+[sub_resource type="Resource" id="Resource_fwrr5"]
+script = ExtResource("5_iwxe8")
+signal_name = "pressed"
+
+[sub_resource type="Resource" id="Resource_rvtmx"]
+script = ExtResource("7_5gi0r")
+singleton_name = "Settings"
+singleton_child = "Panel"
+singleton_method = "show"
+args = []
+
+[sub_resource type="Resource" id="Resource_mwcvd"]
+script = ExtResource("5_iwxe8")
+signal_name = "pressed"
+
+[sub_resource type="Resource" id="Resource_rk5ni"]
+script = ExtResource("7_4ms41")
+scene_file = "res://scenes/main_menu.tscn"
+
+[sub_resource type="Resource" id="Resource_cqx4o"]
+script = ExtResource("5_iwxe8")
+signal_name = "ready"
+
+[sub_resource type="Resource" id="Resource_qm33x"]
+script = ExtResource("7_5gi0r")
+singleton_name = "BGMManager"
+singleton_child = ""
+singleton_method = "change_bgm"
+args = [ExtResource("8_0wa5c")]
+
 [node name="World" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_valqr")]
@@ -45,7 +80,7 @@ shape = SubResource("ConcavePolygonShape3D_4iybn")
 transform = Transform3D(0.784203, 0.344599, -0.516021, 0, 0.831615, 0.555353, 0.620505, -0.435509, 0.652155, 0, 1.5874, 0)
 shadow_enabled = true
 
-[node name="UI" type="Control" parent="."]
+[node name="GameplayHUD" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,8 +88,45 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FPS Counter" type="Label" parent="UI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Margin" type="MarginContainer" parent="GameplayHUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"SmallMarginContainer"
+
+[node name="TopMenu" type="HBoxContainer" parent="GameplayHUD/Margin"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="FPS Counter" type="Label" parent="GameplayHUD/Margin/TopMenu"]
+layout_mode = 2
+size_flags_horizontal = 2
 script = ExtResource("3_rhvj1")
+
+[node name="Settings" type="Button" parent="GameplayHUD/Margin/TopMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_type_variation = &"IconButton"
+text = ""
+flat = true
+script = ExtResource("4_hoy1v")
+target = SubResource("Resource_fwrr5")
+action = SubResource("Resource_rvtmx")
+
+[node name="MainMenu" type="Button" parent="GameplayHUD/Margin/TopMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_type_variation = &"IconButton"
+text = ""
+flat = true
+script = ExtResource("4_hoy1v")
+target = SubResource("Resource_mwcvd")
+action = SubResource("Resource_rk5ni")
+
+[node name="BGMSetter" type="Node" parent="."]
+script = ExtResource("4_hoy1v")
+target = SubResource("Resource_cqx4o")
+action = SubResource("Resource_qm33x")
