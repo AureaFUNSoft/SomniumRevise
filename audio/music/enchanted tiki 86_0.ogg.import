@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b1boxqqk0gp71"
+path="res://.godot/imported/enchanted tiki 86_0.ogg-ccf9a85b1cabb13fbc0f09597389258f.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/enchanted tiki 86_0.ogg"
+dest_files=["res://.godot/imported/enchanted tiki 86_0.ogg-ccf9a85b1cabb13fbc0f09597389258f.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
