@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cecmb6vi0uohr"]
+
+[ext_resource type="Script" path="res://scripts/autoloads/bgm_manager.gd" id="1_wy73p"]
+
+[node name="BGMManager" type="Node" node_paths=PackedStringArray("bgm_player")]
+script = ExtResource("1_wy73p")
+bgm_player = NodePath("BGMPlayer")
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"BGM"

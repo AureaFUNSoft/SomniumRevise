@@ -1,14 +1,53 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt7f8e5y6ne3f"]
+[gd_scene load_steps=16 format=3 uid="uid://bt7f8e5y6ne3f"]
 
 [ext_resource type="Script" path="res://scripts/basic_behaviour.gd" id="1_j1ylg"]
 [ext_resource type="Script" path="res://scripts/actions/change_scene_action.gd" id="2_5cuw5"]
-[ext_resource type="PackedScene" uid="uid://dw36jpmia1ecl" path="res://scenes/gameplay.tscn" id="3_re6fk"]
+[ext_resource type="Script" path="res://scripts/actions/signal_target.gd" id="2_kytkr"]
 [ext_resource type="Script" path="res://scripts/actions/quit_action.gd" id="4_p8n5h"]
+[ext_resource type="Script" path="res://scripts/actions/singleton_action.gd" id="5_83nkw"]
+[ext_resource type="AudioStream" uid="uid://cegsnonoup7m" path="res://audio/music/song18_0.ogg" id="7_d2u1s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ikpl"]
 font_size = 110
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.160784)
+
+[sub_resource type="Resource" id="Resource_l5f5r"]
+script = ExtResource("2_kytkr")
+signal_name = "pressed"
+
+[sub_resource type="Resource" id="Resource_a84xl"]
+script = ExtResource("2_5cuw5")
+scene_file = "res://scenes/gameplay.tscn"
+
+[sub_resource type="Resource" id="Resource_nm2a6"]
+script = ExtResource("2_kytkr")
+signal_name = "pressed"
+
+[sub_resource type="Resource" id="Resource_epnqx"]
+script = ExtResource("5_83nkw")
+singleton_name = "Settings"
+singleton_child = "Panel"
+singleton_method = "show"
+args = []
+
+[sub_resource type="Resource" id="Resource_gfvwk"]
+script = ExtResource("2_kytkr")
+signal_name = "pressed"
+
+[sub_resource type="Resource" id="Resource_tat5v"]
+script = ExtResource("4_p8n5h")
+
+[sub_resource type="Resource" id="Resource_kj3j6"]
+script = ExtResource("2_kytkr")
+signal_name = "ready"
+
+[sub_resource type="Resource" id="Resource_a716o"]
+script = ExtResource("5_83nkw")
+singleton_name = "BGMManager"
+singleton_child = ""
+singleton_method = "change_bgm"
+args = [ExtResource("7_d2u1s")]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -58,26 +97,25 @@ alignment = 1
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
 text = "New Game"
-
-[node name="PressBehaviour" type="Node" parent="VList/Menu/New"]
 script = ExtResource("1_j1ylg")
-signal_name = "pressed"
+target = SubResource("Resource_l5f5r")
+action = SubResource("Resource_a84xl")
 
-[node name="ChangeSceneAction" type="Node" parent="VList/Menu/New/PressBehaviour"]
-script = ExtResource("2_5cuw5")
-scene_file = ExtResource("3_re6fk")
+[node name="Settings" type="Button" parent="VList/Menu"]
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "Settings"
+script = ExtResource("1_j1ylg")
+target = SubResource("Resource_nm2a6")
+action = SubResource("Resource_epnqx")
 
 [node name="Quit" type="Button" parent="VList/Menu"]
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
 text = "Quit Game"
-
-[node name="PressBehaviour" type="Node" parent="VList/Menu/Quit"]
 script = ExtResource("1_j1ylg")
-signal_name = "pressed"
-
-[node name="QuitAction" type="Node" parent="VList/Menu/Quit/PressBehaviour"]
-script = ExtResource("4_p8n5h")
+target = SubResource("Resource_gfvwk")
+action = SubResource("Resource_tat5v")
 
 [node name="Footer" type="VBoxContainer" parent="VList"]
 layout_mode = 2
@@ -88,3 +126,8 @@ alignment = 1
 layout_mode = 2
 text = "Godot 4 Open Project"
 horizontal_alignment = 1
+
+[node name="BGMSetter" type="Node" parent="."]
+script = ExtResource("1_j1ylg")
+target = SubResource("Resource_kj3j6")
+action = SubResource("Resource_a716o")

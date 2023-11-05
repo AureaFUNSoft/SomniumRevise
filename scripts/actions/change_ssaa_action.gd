@@ -1,7 +1,6 @@
-class_name QuitAction
+class_name ChangeSSAAAction
 extends BasicAction
 
 func do_action(behaviour, parameters = {}):
 	super.do_action(behaviour)
-	node.get_tree().quit()
-	
+	BGMManager.get_viewport().screen_space_aa = parameters.index

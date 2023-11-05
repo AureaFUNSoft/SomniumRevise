@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://1sm45tjoiu5q"]
+
+[ext_resource type="PackedScene" uid="uid://bav227xval002" path="res://objects/gui/base_setting_item.tscn" id="1_xmgkn"]
+[ext_resource type="Script" path="res://scripts/node_extensions/option_button_extended.gd" id="2_1uva7"]
+
+[node name="Resolution" instance=ExtResource("1_xmgkn")]
+
+[node name="OptionButton" type="OptionButton" parent="List/Panel" index="0"]
+layout_mode = 2
+theme_type_variation = &"NegativeOption"
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+script = ExtResource("2_1uva7")
