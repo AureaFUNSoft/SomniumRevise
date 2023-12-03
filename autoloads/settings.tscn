@@ -13,10 +13,10 @@
 [ext_resource type="Script" path="res://scripts/resources/option_lists/generic_list.gd" id="10_y2rhl"]
 [ext_resource type="Script" path="res://scripts/actions/change_fps_action.gd" id="11_35rl1"]
 [ext_resource type="Script" path="res://scripts/actions/change_vsync_action.gd" id="11_rpccq"]
-[ext_resource type="Script" path="res://scripts/actions/change_audio_volume_action.gd" id="13_7qmrc"]
 [ext_resource type="Script" path="res://scripts/actions/change_ssaa_action.gd" id="13_ghmwe"]
 [ext_resource type="Script" path="res://scripts/actions/change_taa_action.gd" id="14_r2nwi"]
 [ext_resource type="Script" path="res://scripts/actions/change_msaa_action.gd" id="15_15qr4"]
+[ext_resource type="Script" path="res://scripts/actions/change_audio_volume_action.gd" id="17_5ateu"]
 
 [sub_resource type="Resource" id="Resource_ap47p"]
 script = ExtResource("4_3tidd")
@@ -98,20 +98,20 @@ lists = ["Disabled", "2x", "4x", "8x"]
 default_index = 0
 action = SubResource("Resource_6wu3p")
 
-[sub_resource type="Resource" id="Resource_g40fw"]
-script = ExtResource("13_7qmrc")
+[sub_resource type="Resource" id="Resource_vo5qu"]
+script = ExtResource("17_5ateu")
 bus_name = "Master"
 
-[sub_resource type="Resource" id="Resource_vn7ax"]
-script = ExtResource("13_7qmrc")
+[sub_resource type="Resource" id="Resource_ph8d1"]
+script = ExtResource("17_5ateu")
 bus_name = "BGM"
 
-[sub_resource type="Resource" id="Resource_k3ilw"]
-script = ExtResource("13_7qmrc")
+[sub_resource type="Resource" id="Resource_tx2wd"]
+script = ExtResource("17_5ateu")
 bus_name = "SFX"
 
-[sub_resource type="Resource" id="Resource_oxog3"]
-script = ExtResource("13_7qmrc")
+[sub_resource type="Resource" id="Resource_ql00b"]
+script = ExtResource("17_5ateu")
 bus_name = "Voice"
 
 [node name="Settings" type="CanvasLayer"]
@@ -349,7 +349,7 @@ layout_mode = 2
 text = "Master Volume"
 
 [node name="Slider" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/Master/List/Panel/Content" index="1"]
-actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_g40fw")])
+actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_vo5qu")])
 
 [node name="BGM" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List" instance=ExtResource("7_l2l0g")]
 layout_mode = 2
@@ -358,7 +358,7 @@ layout_mode = 2
 text = "BGM Volume"
 
 [node name="Slider" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/BGM/List/Panel/Content" index="1"]
-actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_vn7ax")])
+actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_ph8d1")])
 
 [node name="SFX" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List" instance=ExtResource("7_l2l0g")]
 layout_mode = 2
@@ -367,7 +367,7 @@ layout_mode = 2
 text = "SFX Volume"
 
 [node name="Slider" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/SFX/List/Panel/Content" index="1"]
-actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_k3ilw")])
+actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_tx2wd")])
 
 [node name="Voice" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List" instance=ExtResource("7_l2l0g")]
 layout_mode = 2
@@ -376,7 +376,7 @@ layout_mode = 2
 text = "Voice Volume"
 
 [node name="Slider" parent="Panel/Margin/VList/Content/List/TabContainer/Sounds/List/Voice/List/Panel/Content" index="1"]
-actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_oxog3")])
+actions = Array[Resource("res://scripts/actions/basic_action.gd")]([SubResource("Resource_ql00b")])
 
 [connection signal="pressed" from="Panel/Margin/VList/Title/Close" to="Panel" method="hide"]
 [connection signal="button_pressed_index" from="Panel/Margin/VList/Content/List/List" to="Panel/Margin/VList/Content/List/TabContainer" method="set_current_tab"]

@@ -6,13 +6,15 @@ extends CharacterBody3D
 
 @export_category("Locomotion Parameters")
 @export var rotation_modifier:float
+@export var combat_idle_time:float
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
+var combat_mode = false
+var combat_idle_timer = 0
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -22,11 +24,22 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+	
+	if combat_idle_timer > 0:
+		combat_idle_timer -= delta
+	
+	if combat_idle_timer < 0:
+		combat_idle_timer = 0
+		combat_mode = false
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var attack = Input.is_action_just_pressed("attack")
+	if attack:
+		combat_mode = true
+		combat_idle_timer = combat_idle_time
 	
 	if direction:
 		model_container.rotation.y = lerp_angle(model_container.rotation.y, input_dir.angle_to(Vector2.UP), rotation_modifier)
@@ -35,5 +48,7 @@ func _physics_process(delta):
 	
 	animation_tree.set("parameters/conditions/run", input_dir != Vector2.ZERO)
 	animation_tree.set("parameters/conditions/idle", input_dir == Vector2.ZERO)
+	animation_tree.set("parameters/conditions/attack", attack)
+	animation_tree.set("parameters/conditions/peace", !combat_mode)
 
 	move_and_slide()
