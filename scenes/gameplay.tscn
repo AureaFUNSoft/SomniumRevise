@@ -1,34 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://dw36jpmia1ecl"]
+[gd_scene load_steps=15 format=3 uid="uid://dw36jpmia1ecl"]
 
 [ext_resource type="PackedScene" uid="uid://sy2fhc6wmx54" path="res://objects/player.tscn" id="1_valqr"]
-[ext_resource type="Texture2D" uid="uid://b1hxts2380c43" path="res://textures/checker.png" id="2_brdaw"]
+[ext_resource type="PackedScene" uid="uid://cly0w42ynklyj" path="res://objects/spatial/map/test_map.tscn" id="2_l43vp"]
 [ext_resource type="Script" path="res://scripts/fps_counter.gd" id="3_rhvj1"]
 [ext_resource type="Script" path="res://scripts/basic_behaviour.gd" id="4_hoy1v"]
 [ext_resource type="Script" path="res://scripts/actions/signal_target.gd" id="5_iwxe8"]
 [ext_resource type="Script" path="res://scripts/actions/change_scene_action.gd" id="7_4ms41"]
 [ext_resource type="Script" path="res://scripts/actions/singleton_action.gd" id="7_5gi0r"]
 [ext_resource type="AudioStream" uid="uid://b6h8vk5hbglnn" path="res://audio/music/song21_0.ogg" id="8_0wa5c"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r4o3s"]
-
-[sub_resource type="Sky" id="Sky_hsx86"]
-sky_material = SubResource("ProceduralSkyMaterial_r4o3s")
-
-[sub_resource type="Environment" id="Environment_g4smb"]
-background_mode = 2
-sky = SubResource("Sky_hsx86")
-sdfgi_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8uig"]
-albedo_texture = ExtResource("2_brdaw")
-uv1_triplanar = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_1etut"]
-material = SubResource("StandardMaterial3D_p8uig")
-size = Vector2(50, 50)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4iybn"]
-data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
 [sub_resource type="Resource" id="Resource_fwrr5"]
 script = ExtResource("5_iwxe8")
@@ -62,23 +41,14 @@ args = [ExtResource("8_0wa5c")]
 
 [node name="World" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_valqr")]
+[node name="Game" type="Node3D" parent="."]
+
+[node name="Player" parent="Game" instance=ExtResource("1_valqr")]
 rotation_modifier = 0.05
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_g4smb")
+[node name="Map" type="Node3D" parent="Game"]
 
-[node name="Floor" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_1etut")
-
-[node name="FloorBody" type="StaticBody3D" parent="Floor"]
-
-[node name="Collider" type="CollisionShape3D" parent="Floor/FloorBody"]
-shape = SubResource("ConcavePolygonShape3D_4iybn")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.784203, 0.344599, -0.516021, 0, 0.831615, 0.555353, 0.620505, -0.435509, 0.652155, 0, 1.5874, 0)
-shadow_enabled = true
+[node name="TestMap" parent="Game/Map" instance=ExtResource("2_l43vp")]
 
 [node name="GameplayHUD" type="Control" parent="."]
 layout_mode = 3
