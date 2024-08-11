@@ -41,7 +41,7 @@ args = [ExtResource("8_0wa5c")]
 
 [node name="World" type="Node3D"]
 
-[node name="Game" type="Node3D" parent="."]
+[node name="Game" type="Node3D" parent="." groups=["Game"]]
 
 [node name="Player" parent="Game" instance=ExtResource("1_valqr")]
 rotation_modifier = 0.05

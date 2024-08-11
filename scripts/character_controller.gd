@@ -16,13 +16,20 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var combat_mode = false
 var combat_idle_timer = 0
 
+
+func _input(event):
+	if Input.is_action_just_pressed("mouse_mode"):
+		CustomInput.set_mouse_mode(CustomInput.MouseModeTypes.CONTROL, true)
+	if Input.is_action_just_released("mouse_mode"):
+		CustomInput.set_mouse_mode(CustomInput.MouseModeTypes.CONTROL, false)
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if CustomInput.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
 	if combat_idle_timer > 0:
@@ -34,9 +41,9 @@ func _physics_process(delta):
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
+	var input_dir = CustomInput.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var attack = Input.is_action_just_pressed("attack")
+	var attack = CustomInput.is_action_just_pressed("attack")
 	if attack:
 		combat_mode = true
 		combat_idle_timer = combat_idle_time

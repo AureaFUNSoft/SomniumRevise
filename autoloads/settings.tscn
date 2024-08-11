@@ -1,10 +1,12 @@
-[gd_scene load_steps=41 format=3 uid="uid://b8x7vawfpbf7s"]
+[gd_scene load_steps=49 format=3 uid="uid://b8x7vawfpbf7s"]
 
 [ext_resource type="Texture2D" uid="uid://bskw85lr507a3" path="res://local_only/setting_reference_1.png" id="1_86nja"]
 [ext_resource type="PackedScene" uid="uid://1sm45tjoiu5q" path="res://objects/gui/option_setting_item.tscn" id="2_pld3d"]
 [ext_resource type="Script" path="res://scripts/basic_behaviour.gd" id="3_l2wmy"]
 [ext_resource type="Script" path="res://scripts/actions/node_object_target.gd" id="4_3tidd"]
 [ext_resource type="Script" path="res://scripts/actions/signal_target.gd" id="4_mi6ho"]
+[ext_resource type="Script" path="res://scripts/actions/singleton_action.gd" id="5_kiafw"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/viewport_blur_capture.gd" id="6_pu25a"]
 [ext_resource type="Script" path="res://scripts/actions/node_action.gd" id="6_wn1tw"]
 [ext_resource type="Script" path="res://scripts/node_utils/button_group_manager.gd" id="6_xxsdp"]
 [ext_resource type="PackedScene" uid="uid://b87h3psugsprm" path="res://objects/gui/slider_setting_item.tscn" id="7_l2l0g"]
@@ -31,6 +33,38 @@ object_target = SubResource("Resource_ap47p")
 script = ExtResource("6_wn1tw")
 node_action = NodePath("../Panel")
 method_name = "hide"
+
+[sub_resource type="Resource" id="Resource_hhc1s"]
+script = ExtResource("4_3tidd")
+target_node = NodePath("../Panel")
+
+[sub_resource type="Resource" id="Resource_h2581"]
+script = ExtResource("4_mi6ho")
+signal_name = "visibility_changed"
+object_target = SubResource("Resource_hhc1s")
+
+[sub_resource type="Resource" id="Resource_dunxq"]
+script = ExtResource("5_kiafw")
+singleton_name = "CustomInput"
+singleton_child = ""
+singleton_method = "set_mouse_mode"
+args = [1, true]
+
+[sub_resource type="Resource" id="Resource_pjq36"]
+script = ExtResource("4_3tidd")
+target_node = NodePath("../Panel")
+
+[sub_resource type="Resource" id="Resource_bx1k7"]
+script = ExtResource("4_mi6ho")
+signal_name = "hidden"
+object_target = SubResource("Resource_pjq36")
+
+[sub_resource type="Resource" id="Resource_vd6vv"]
+script = ExtResource("5_kiafw")
+singleton_name = "CustomInput"
+singleton_child = ""
+singleton_method = "set_mouse_mode"
+args = [1, false]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_qh0gu"]
 
@@ -121,6 +155,16 @@ script = ExtResource("3_l2wmy")
 target = SubResource("Resource_doyyb")
 action = SubResource("Resource_ei20f")
 
+[node name="MouseModEnter" type="Node" parent="."]
+script = ExtResource("3_l2wmy")
+target = SubResource("Resource_h2581")
+action = SubResource("Resource_dunxq")
+
+[node name="MouseModExit" type="Node" parent="."]
+script = ExtResource("3_l2wmy")
+target = SubResource("Resource_bx1k7")
+action = SubResource("Resource_vd6vv")
+
 [node name="Panel" type="PanelContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -139,6 +183,11 @@ layout_mode = 2
 texture = ExtResource("1_86nja")
 expand_mode = 2
 stretch_mode = 6
+
+[node name="ViewportBlurCapture" type="TextureRect" parent="Panel"]
+layout_mode = 2
+stretch_mode = 6
+script = ExtResource("6_pu25a")
 
 [node name="Margin" type="MarginContainer" parent="Panel"]
 layout_mode = 2
@@ -196,6 +245,8 @@ alignment = 0
 
 [node name="SubViewport" type="SubViewport" parent="Panel/Margin/VList/Content/List/List/Graphics"]
 transparent_bg = true
+scaling_3d_scale = 2.0
+fsr_sharpness = 0.0
 size = Vector2i(32, 32)
 
 [node name="Label" type="Label" parent="Panel/Margin/VList/Content/List/List/Graphics/SubViewport"]
@@ -220,6 +271,8 @@ alignment = 0
 
 [node name="SubViewport" type="SubViewport" parent="Panel/Margin/VList/Content/List/List/Sounds"]
 transparent_bg = true
+scaling_3d_scale = 2.0
+fsr_sharpness = 0.0
 size = Vector2i(32, 32)
 
 [node name="Label" type="Label" parent="Panel/Margin/VList/Content/List/List/Sounds/SubViewport"]

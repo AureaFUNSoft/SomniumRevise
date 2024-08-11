@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bt7f8e5y6ne3f"]
+[gd_scene load_steps=20 format=3 uid="uid://bt7f8e5y6ne3f"]
 
 [ext_resource type="Script" path="res://scripts/basic_behaviour.gd" id="1_j1ylg"]
 [ext_resource type="Script" path="res://scripts/actions/change_scene_action.gd" id="2_5cuw5"]
@@ -48,6 +48,28 @@ singleton_name = "BGMManager"
 singleton_child = ""
 singleton_method = "change_bgm"
 args = [ExtResource("7_d2u1s")]
+
+[sub_resource type="Resource" id="Resource_vj6tc"]
+script = ExtResource("2_kytkr")
+signal_name = "ready"
+
+[sub_resource type="Resource" id="Resource_oc61v"]
+script = ExtResource("5_83nkw")
+singleton_name = "CustomInput"
+singleton_child = ""
+singleton_method = "set_mouse_mode"
+args = [0, true]
+
+[sub_resource type="Resource" id="Resource_f3qyl"]
+script = ExtResource("2_kytkr")
+signal_name = "tree_exiting"
+
+[sub_resource type="Resource" id="Resource_5r406"]
+script = ExtResource("5_83nkw")
+singleton_name = "CustomInput"
+singleton_child = ""
+singleton_method = "set_mouse_mode"
+args = [0, false]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -131,3 +153,13 @@ horizontal_alignment = 1
 script = ExtResource("1_j1ylg")
 target = SubResource("Resource_kj3j6")
 action = SubResource("Resource_a716o")
+
+[node name="MouseModeEnter" type="Node" parent="."]
+script = ExtResource("1_j1ylg")
+target = SubResource("Resource_vj6tc")
+action = SubResource("Resource_oc61v")
+
+[node name="MouseModeExit" type="Node" parent="."]
+script = ExtResource("1_j1ylg")
+target = SubResource("Resource_f3qyl")
+action = SubResource("Resource_5r406")
