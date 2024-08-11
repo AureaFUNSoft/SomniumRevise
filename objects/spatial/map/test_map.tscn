@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://cly0w42ynklyj"]
+
+[ext_resource type="Texture2D" uid="uid://b1hxts2380c43" path="res://textures/checker.png" id="1_8odwo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8uig"]
+albedo_texture = ExtResource("1_8odwo")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1etut"]
+material = SubResource("StandardMaterial3D_p8uig")
+size = Vector2(50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4iybn"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r4o3s"]
+
+[sub_resource type="Sky" id="Sky_hsx86"]
+sky_material = SubResource("ProceduralSkyMaterial_r4o3s")
+
+[sub_resource type="Environment" id="Environment_g4smb"]
+background_mode = 2
+sky = SubResource("Sky_hsx86")
+sdfgi_enabled = true
+
+[node name="TestMap" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_1etut")
+skeleton = NodePath("../../../..")
+
+[node name="FloorBody" type="StaticBody3D" parent="Floor"]
+
+[node name="Collider" type="CollisionShape3D" parent="Floor/FloorBody"]
+shape = SubResource("ConcavePolygonShape3D_4iybn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.784203, 0.344599, -0.516021, 0, 0.831615, 0.555353, 0.620505, -0.435509, 0.652155, 0, 1.5874, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g4smb")
