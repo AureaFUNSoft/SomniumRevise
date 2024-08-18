@@ -17,7 +17,7 @@ var combat_mode = false
 var combat_idle_timer = 0
 
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("mouse_mode"):
 		CustomInput.set_mouse_mode(CustomInput.MouseModeTypes.CONTROL, true)
 	if Input.is_action_just_released("mouse_mode"):
