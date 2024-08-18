@@ -2,14 +2,12 @@ extends CharacterBody3D
 
 @export_category("Node Dependency")
 @export var animation_tree:AnimationTree
+@export var camera_controller:CameraController
 @export var model_container:Node3D
 
 @export_category("Locomotion Parameters")
 @export var rotation_modifier:float
 @export var combat_idle_time:float
-
-@export_category("Node References")
-@export var camera_controller:CameraController
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
