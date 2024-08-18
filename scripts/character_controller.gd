@@ -8,6 +8,9 @@ extends CharacterBody3D
 @export var rotation_modifier:float
 @export var combat_idle_time:float
 
+@export_category("Node References")
+@export var camera_controller:CameraController
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
@@ -39,17 +42,22 @@ func _physics_process(delta):
 		combat_idle_timer = 0
 		combat_mode = false
 	
+	var rotation_transform = transform
+	if camera_controller != null:
+		rotation_transform = camera_controller.transform
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = CustomInput.get_vector("left", "right", "forward", "backward")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction = (rotation_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var attack = CustomInput.is_action_just_pressed("attack")
 	if attack:
 		combat_mode = true
 		combat_idle_timer = combat_idle_time
 	
 	if direction:
-		model_container.rotation.y = lerp_angle(model_container.rotation.y, input_dir.angle_to(Vector2.UP), rotation_modifier)
+		var norm_dir = Vector2(direction.x, direction.z)
+		model_container.rotation.y = lerp_angle(model_container.rotation.y, norm_dir.angle_to(Vector2.UP), rotation_modifier)
 	
 	velocity = model_container.quaternion * -animation_tree.get_root_motion_position() / delta
 	
