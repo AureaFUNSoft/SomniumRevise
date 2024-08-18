@@ -5,7 +5,7 @@ extends BasicAction
 @export var node_action: NodePath
 @export var method_name: String
 
-func do_action(behaviour, parameters = {}):
+func do_action(behaviour):
 	super.do_action(behaviour)
 	
 	var a_node = behaviour.get_node(node_action)

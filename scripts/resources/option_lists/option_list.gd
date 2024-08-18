@@ -19,4 +19,5 @@ func select(index):
 			"index": index,
 			"value": _list[index]
 		}
-		action.do_action(self,params)
+		action.set_parameter(params)
+		action.do_action(self)

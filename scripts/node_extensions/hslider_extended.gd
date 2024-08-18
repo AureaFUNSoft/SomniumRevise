@@ -11,4 +11,5 @@ func _ready():
 func _value_changed(new_value):
 	value_label.text = str(roundi(new_value))
 	for action in actions:
-		action.do_action(self, [min_value,max_value,new_value])
+		action.set_parameter([min_value,max_value,new_value])
+		action.do_action(self)

@@ -7,7 +7,7 @@ extends BasicAction
 @export var singleton_method: String
 @export var args: Array
 
-func do_action(behaviour, parameters = {}):
+func do_action(behaviour):
 	super.do_action(behaviour)
 	var singleton = node.get_node("/root/%s" %singleton_name)
 	

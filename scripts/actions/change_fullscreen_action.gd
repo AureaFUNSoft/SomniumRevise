@@ -6,6 +6,6 @@ const value = {
 	1: DisplayServer.WINDOW_MODE_WINDOWED
 }
 
-func do_action(behaviour, parameters = {}):
+func do_action(behaviour):
 	super.do_action(behaviour)
 	DisplayServer.window_set_mode(value[parameters.index])

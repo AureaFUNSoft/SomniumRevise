@@ -3,7 +3,7 @@ extends BasicAction
 
 @export var bus_name:String
 
-func do_action(behaviour, parameters = []):
+func do_action(behaviour):
 	super.do_action(behaviour)
 	var bus_idx = AudioServer.get_bus_index(bus_name)
 	var value_range = parameters[1] - parameters[0]
