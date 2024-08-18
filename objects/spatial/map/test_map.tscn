@@ -1,17 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cly0w42ynklyj"]
+[gd_scene load_steps=6 format=3 uid="uid://cly0w42ynklyj"]
 
 [ext_resource type="Texture2D" uid="uid://b1hxts2380c43" path="res://textures/checker.png" id="1_8odwo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8uig"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h07pa"]
 albedo_texture = ExtResource("1_8odwo")
 uv1_triplanar = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_1etut"]
-material = SubResource("StandardMaterial3D_p8uig")
-size = Vector2(50, 50)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4iybn"]
-data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r4o3s"]
 
@@ -25,14 +18,37 @@ sdfgi_enabled = true
 
 [node name="TestMap" type="Node3D"]
 
-[node name="Floor" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_1etut")
-skeleton = NodePath("../../../..")
+[node name="Map" type="CSGCombiner3D" parent="."]
+use_collision = true
 
-[node name="FloorBody" type="StaticBody3D" parent="Floor"]
+[node name="Floor" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(50, 1, 50)
+material = SubResource("StandardMaterial3D_h07pa")
 
-[node name="Collider" type="CollisionShape3D" parent="Floor/FloorBody"]
-shape = SubResource("ConcavePolygonShape3D_4iybn")
+[node name="Building" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2, 0)
+size = Vector3(10, 4, 6)
+
+[node name="Building2" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2, -8)
+size = Vector3(10, 4, 6)
+
+[node name="Building3" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2, 8)
+size = Vector3(10, 4, 6)
+
+[node name="Building4" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2, 0)
+size = Vector3(10, 4, 6)
+
+[node name="Building5" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2, -8)
+size = Vector3(10, 4, 6)
+
+[node name="Building6" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2, 8)
+size = Vector3(10, 4, 6)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.784203, 0.344599, -0.516021, 0, 0.831615, 0.555353, 0.620505, -0.435509, 0.652155, 0, 1.5874, 0)
