@@ -21,7 +21,7 @@ func set_mouse_mode(type: MouseModeTypes, state: bool):
 	update_mouse_mode()
 
 func update_mouse_mode():
-	Input.mouse_mode = 0 if get_mouse_state() else 2
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if get_mouse_state() else Input.MOUSE_MODE_CAPTURED
 
 func get_mouse_state():
 	for mode in _mouse_modes:
