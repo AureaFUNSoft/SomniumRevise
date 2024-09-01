@@ -1,10 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cly0w42ynklyj"]
+[gd_scene load_steps=5 format=3 uid="uid://cly0w42ynklyj"]
 
-[ext_resource type="Texture2D" uid="uid://b1hxts2380c43" path="res://textures/checker.png" id="1_8odwo"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h07pa"]
-albedo_texture = ExtResource("1_8odwo")
-uv1_triplanar = true
+[ext_resource type="Material" uid="uid://c8idmplbfuihh" path="res://resource/material/checker.tres" id="1_3b6xu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r4o3s"]
 
@@ -24,7 +20,7 @@ use_collision = true
 [node name="Floor" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 size = Vector3(50, 1, 50)
-material = SubResource("StandardMaterial3D_h07pa")
+material = ExtResource("1_3b6xu")
 
 [node name="Building" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2, 0)

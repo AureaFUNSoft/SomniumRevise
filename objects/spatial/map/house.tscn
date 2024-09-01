@@ -1,0 +1,176 @@
+[gd_scene load_steps=5 format=3 uid="uid://blttqw6wqflc5"]
+
+[ext_resource type="Material" uid="uid://c8idmplbfuihh" path="res://resource/material/checker.tres" id="1_o6kjf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yw64f"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_l0p4m"]
+sky_material = SubResource("ProceduralSkyMaterial_yw64f")
+
+[sub_resource type="Environment" id="Environment_4r63f"]
+background_mode = 2
+sky = SubResource("Sky_l0p4m")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="House" type="Node3D"]
+
+[node name="Main" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="Main"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0.25)
+size = Vector3(13, 0.1, 26.5)
+material = ExtResource("1_o6kjf")
+
+[node name="Entrance" type="CSGCombiner3D" parent="Main"]
+
+[node name="Floor" type="CSGBox3D" parent="Main/Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.05, -0.5)
+size = Vector3(5, 0.1, 5)
+material = ExtResource("1_o6kjf")
+
+[node name="RWall" type="CSGBox3D" parent="Main/Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.95, 1.5, 2)
+size = Vector3(5, 3, 0.1)
+
+[node name="RWall2" type="CSGBox3D" parent="Main/Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.95, 1.5, -3)
+size = Vector3(5, 3, 0.1)
+
+[node name="OutWall" type="CSGBox3D" parent="Main/Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1.5, -0.5)
+size = Vector3(0.1, 3, 5)
+
+[node name="OuterWall" type="CSGCombiner3D" parent="Main"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="LWall" type="CSGBox3D" parent="Main/OuterWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -13)
+size = Vector3(13, 3, 0.1)
+
+[node name="RWall" type="CSGBox3D" parent="Main/OuterWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 13.5)
+size = Vector3(13, 3, 0.1)
+
+[node name="FWallL" type="CSGBox3D" parent="Main/OuterWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, -8)
+size = Vector3(0.1, 3, 10)
+
+[node name="FWallR" type="CSGBox3D" parent="Main/OuterWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, 7.75)
+size = Vector3(0.1, 3, 11.5)
+
+[node name="BWall" type="CSGBox3D" parent="Main/OuterWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 0.25)
+size = Vector3(0.1, 3, 26.5)
+
+[node name="RecRoom" type="CSGCombiner3D" parent="Main"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0)
+
+[node name="Wall" type="CSGBox3D" parent="Main/RecRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.25)
+size = Vector3(0.1, 3, 26.5)
+
+[node name="GuestRoom" type="CSGCombiner3D" parent="Main"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+
+[node name="FWall" type="CSGBox3D" parent="Main/GuestRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -4)
+size = Vector3(0.1, 3, 10)
+
+[node name="RWall" type="CSGBox3D" parent="Main/GuestRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1.5, 2.5)
+size = Vector3(8.5, 3, 0.1)
+
+[node name="Sofa" type="CSGCombiner3D" parent="Main/GuestRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -2)
+
+[node name="Whole" type="CSGBox3D" parent="Main/GuestRoom/Sofa"]
+size = Vector3(2.5, 0.8, 0.8)
+
+[node name="Sofa2" type="CSGCombiner3D" parent="Main/GuestRoom"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0.4, 0)
+
+[node name="Whole" type="CSGBox3D" parent="Main/GuestRoom/Sofa2"]
+size = Vector3(2.5, 0.8, 0.8)
+
+[node name="Kitchen" type="CSGCombiner3D" parent="Main"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4.5)
+
+[node name="RWall" type="CSGBox3D" parent="Main/Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 1.5, 1.5)
+size = Vector3(5, 3, 0.1)
+
+[node name="Room1" type="CSGCombiner3D" parent="Main"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="Bed" type="CSGCombiner3D" parent="Main/Room1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, -1.5)
+
+[node name="Whole" type="CSGBox3D" parent="Main/Room1/Bed"]
+size = Vector3(3, 0.4, 3)
+
+[node name="OutWall" type="CSGBox3D" parent="Main/Room1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, -1.04956)
+size = Vector3(0.1, 3, 4)
+
+[node name="InWall" type="CSGBox3D" parent="Main/Room1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -1.25)
+size = Vector3(0.1, 3, 3.5)
+
+[node name="RWall" type="CSGBox3D" parent="Main/Room1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.5, 2)
+size = Vector3(8.5, 3, 0.1)
+
+[node name="Room2" type="CSGCombiner3D" parent="Main"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
+
+[node name="OutWall" type="CSGBox3D" parent="Main/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 0.0500002)
+size = Vector3(0.1, 3, 4)
+
+[node name="InWall" type="CSGBox3D" parent="Main/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0.25)
+size = Vector3(0.1, 3, 3.5)
+
+[node name="RWall" type="CSGBox3D" parent="Main/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.5, 2)
+size = Vector3(8.5, 3, 0.1)
+
+[node name="Bed" type="CSGCombiner3D" parent="Main/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, 0.5)
+
+[node name="Whole" type="CSGBox3D" parent="Main/Room2/Bed"]
+size = Vector3(3, 0.4, 3)
+
+[node name="Room3" type="CSGCombiner3D" parent="Main"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.5)
+
+[node name="Bed" type="CSGCombiner3D" parent="Main/Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+
+[node name="Whole" type="CSGBox3D" parent="Main/Room3/Bed"]
+size = Vector3(3, 0.4, 3)
+
+[node name="InWall" type="CSGBox3D" parent="Main/Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0.25)
+size = Vector3(0.1, 3, 3.5)
+
+[node name="BathBWall" type="CSGBox3D" parent="Main/Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, 0.3)
+size = Vector3(0.1, 3, 3.5)
+
+[node name="BathLWall" type="CSGBox3D" parent="Main/Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4498, 1.5, -1.5)
+size = Vector3(4, 3, 0.1)
+
+[node name="Spawn" type="Node3D" parent="." groups=["SpawnPoint"]]
+
+[node name="Spawn1" type="Node3D" parent="Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 0)
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4r63f")
