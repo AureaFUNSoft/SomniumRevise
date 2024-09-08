@@ -17,6 +17,17 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var combat_mode = false
 var combat_idle_timer = 0
 
+func _ready():
+	var action_callable = Callable(self, "_move_to_spawn_pos")
+	Gameplay.connect("change_map_completed",action_callable)
+
+func _move_to_spawn_pos():
+	var spawn_pos_container:Node3D = get_tree().get_first_node_in_group("SpawnPoint")
+	var spawn_point:Node3D = spawn_pos_container.get_child(Gameplay.spawn_index)
+	position = spawn_point.position
+	model_container.rotation.y = spawn_point.rotation.y
+	camera_controller.rotation.y = spawn_point.rotation.y
+	var spawners = get_tree().get_nodes_in_group("SpawnPoint")
 
 func _input(_event):
 	if Input.is_action_just_pressed("mouse_mode"):

@@ -1,8 +1,8 @@
 [gd_scene load_steps=20 format=3 uid="uid://bt7f8e5y6ne3f"]
 
 [ext_resource type="Script" path="res://scripts/basic_behaviour.gd" id="1_j1ylg"]
-[ext_resource type="Script" path="res://scripts/actions/change_scene_action.gd" id="2_5cuw5"]
 [ext_resource type="Script" path="res://scripts/actions/signal_target.gd" id="2_kytkr"]
+[ext_resource type="Script" path="res://scripts/actions/change_map_action.gd" id="4_2flxc"]
 [ext_resource type="Script" path="res://scripts/actions/quit_action.gd" id="4_p8n5h"]
 [ext_resource type="Script" path="res://scripts/actions/singleton_action.gd" id="5_83nkw"]
 [ext_resource type="AudioStream" uid="uid://cegsnonoup7m" path="res://audio/music/song18_0.ogg" id="7_d2u1s"]
@@ -16,9 +16,10 @@ shadow_color = Color(0, 0, 0, 0.160784)
 script = ExtResource("2_kytkr")
 signal_name = "pressed"
 
-[sub_resource type="Resource" id="Resource_a84xl"]
-script = ExtResource("2_5cuw5")
-scene_file = "res://scenes/gameplay.tscn"
+[sub_resource type="Resource" id="Resource_4lqna"]
+script = ExtResource("4_2flxc")
+scene_file = "res://objects/spatial/map/house.tscn"
+spawn_index = 0
 
 [sub_resource type="Resource" id="Resource_nm2a6"]
 script = ExtResource("2_kytkr")
@@ -121,7 +122,7 @@ theme_type_variation = &"MainMenuButton"
 text = "New Game"
 script = ExtResource("1_j1ylg")
 target = SubResource("Resource_l5f5r")
-action = SubResource("Resource_a84xl")
+action = SubResource("Resource_4lqna")
 
 [node name="Settings" type="Button" parent="VList/Menu"]
 layout_mode = 2

@@ -14,6 +14,6 @@ func _input(event: InputEvent) -> void:
 		elif move.x < 0:
 			move.x = min(0, move.x + move_margin.x)
 		if abs(move.x) > move_margin.x:
-			var x_speed = move.x * mouse_speed.x * get_process_delta_time()
+			var x_speed = move.x * -mouse_speed.x * get_process_delta_time()
 			x_speed /= Vector2(DisplayServer.screen_get_size()).x
 			rotate_y(x_speed)

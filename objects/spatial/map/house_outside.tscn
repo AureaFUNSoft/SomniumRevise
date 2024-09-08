@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=3 uid="uid://15xplhflx2py"]
+
+[ext_resource type="Material" uid="uid://c8idmplbfuihh" path="res://resource/material/checker.tres" id="1_nl8pm"]
+[ext_resource type="PackedScene" uid="uid://ck5hrql3y4n37" path="res://objects/spatial/interactable/teleporter.tscn" id="2_wwnhb"]
+[ext_resource type="Script" path="res://scripts/actions/change_map_action.gd" id="3_3o78c"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xbe0a"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_iifce"]
+sky_material = SubResource("ProceduralSkyMaterial_xbe0a")
+
+[sub_resource type="Environment" id="Environment_5govi"]
+background_mode = 2
+sky = SubResource("Sky_iifce")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_0sh1a"]
+script = ExtResource("3_3o78c")
+scene_file = "res://objects/spatial/map/house.tscn"
+spawn_index = 1
+
+[node name="HouseOutside" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5govi")
+
+[node name="House" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.1, 0)
+size = Vector3(50, 0.2, 40)
+material = ExtResource("1_nl8pm")
+
+[node name="Building" type="CSGCombiner3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="Main" type="CSGBox3D" parent="House/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0.25)
+size = Vector3(13, 5, 26.5)
+
+[node name="Entrance" type="CSGBox3D" parent="House/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, -0.45)
+size = Vector3(5, 5, 5)
+
+[node name="Door" type="CSGBox3D" parent="House/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4984, 1, -2.25)
+size = Vector3(0.1, 2, 1)
+material = ExtResource("1_nl8pm")
+
+[node name="Wall" type="CSGCombiner3D" parent="House"]
+
+[node name="LWall" type="CSGBox3D" parent="House/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, -19.75)
+size = Vector3(50, 2, 0.5)
+
+[node name="RWall" type="CSGBox3D" parent="House/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 19.75)
+size = Vector3(50, 2, 0.5)
+
+[node name="FWallL" type="CSGBox3D" parent="House/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.25, 1, -10.75)
+size = Vector3(0.5, 2, 17.5)
+
+[node name="FWallR" type="CSGBox3D" parent="House/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.25, 1, 10.75)
+size = Vector3(0.5, 2, 17.5)
+
+[node name="BWall" type="CSGBox3D" parent="House/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.75, 1, 0)
+size = Vector3(0.5, 2, 39)
+
+[node name="Gate" type="CSGCombiner3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.9143, 0, 0)
+
+[node name="GateL" type="CSGBox3D" parent="House/Gate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+size = Vector3(0.1, 2, 2)
+
+[node name="GateR" type="CSGBox3D" parent="House/Gate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+size = Vector3(0.1, 2, 2)
+
+[node name="Bush" type="CSGCombiner3D" parent="House"]
+
+[node name="LBush1" type="CSGBox3D" parent="House/Bush"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0.25, -2.25)
+size = Vector3(14, 0.5, 0.5)
+
+[node name="Lbush2" type="CSGBox3D" parent="House/Bush"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 0.25, -11)
+size = Vector3(0.5, 0.5, 17)
+
+[node name="RBush1" type="CSGBox3D" parent="House/Bush"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0.25, 2.25)
+size = Vector3(14, 0.5, 0.5)
+
+[node name="RBush2" type="CSGBox3D" parent="House/Bush"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 0.25, 11)
+size = Vector3(0.5, 0.5, 17)
+
+[node name="Spawn" type="Node3D" parent="." groups=["SpawnPoint"]]
+
+[node name="Spawn1" type="Node3D" parent="Spawn"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 0, -1.75)
+
+[node name="Spawn2" type="Node3D" parent="Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 0, 0)
+
+[node name="Interactable" type="Node3D" parent="."]
+
+[node name="Door" parent="Interactable" instance=ExtResource("2_wwnhb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.54, 0, -1.75)
+action = SubResource("Resource_0sh1a")
+
+[node name="Label3D" parent="Interactable/Door/Visual" index="0"]
+text = "Go Inside"
+
+[editable path="Interactable/Door"]

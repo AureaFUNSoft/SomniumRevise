@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck5hrql3y4n37"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/interactable.gd" id="1_ms2jr"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xt84i"]
+
+[node name="Door" type="Area3D" node_paths=PackedStringArray("toggled_visual")]
+script = ExtResource("1_ms2jr")
+toggled_visual = NodePath("Visual")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_xt84i")
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="Label3D" type="Label3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86704, 0.0194311)
+double_sided = false
+text = "Go Outside"
+
+[connection signal="body_entered" from="." to="." method="_on_player_entered"]
+[connection signal="body_exited" from="." to="." method="_on_player_exited"]

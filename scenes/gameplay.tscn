@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dw36jpmia1ecl"]
 
 [ext_resource type="PackedScene" uid="uid://sy2fhc6wmx54" path="res://objects/player.tscn" id="1_valqr"]
-[ext_resource type="PackedScene" uid="uid://blttqw6wqflc5" path="res://objects/spatial/map/house.tscn" id="2_ks1l1"]
+[ext_resource type="Script" path="res://scripts/gameplay/map_container.gd" id="2_gl2vu"]
 [ext_resource type="Script" path="res://scripts/fps_counter.gd" id="3_rhvj1"]
 [ext_resource type="Script" path="res://scripts/basic_behaviour.gd" id="4_hoy1v"]
 [ext_resource type="Script" path="res://scripts/actions/signal_target.gd" id="5_iwxe8"]
@@ -47,9 +47,7 @@ args = [ExtResource("8_0wa5c")]
 rotation_modifier = 0.05
 
 [node name="Map" type="Node3D" parent="Game"]
-
-[node name="House" parent="Game/Map" instance=ExtResource("2_ks1l1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6619, 0, 0)
+script = ExtResource("2_gl2vu")
 
 [node name="GameplayHUD" type="Control" parent="."]
 layout_mode = 3

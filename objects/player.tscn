@@ -8,7 +8,7 @@
 radius = 0.3
 height = 1.6
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("animation_tree", "camera_controller", "model_container")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("animation_tree", "camera_controller", "model_container") groups=["Player"]]
 script = ExtResource("1_kft2y")
 animation_tree = NodePath("Model/Testa/AnimationTree")
 camera_controller = NodePath("Camera")
@@ -22,7 +22,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [node name="Camera" type="Node3D" parent="."]
 script = ExtResource("3_roeyr")
-mouse_speed = Vector2(1, 0)
+mouse_speed = Vector2(2, 0)
 move_margin = Vector2(500, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Camera"]

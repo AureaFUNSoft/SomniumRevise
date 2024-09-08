@@ -1,6 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://blttqw6wqflc5"]
+[gd_scene load_steps=8 format=3 uid="uid://blttqw6wqflc5"]
 
 [ext_resource type="Material" uid="uid://c8idmplbfuihh" path="res://resource/material/checker.tres" id="1_o6kjf"]
+[ext_resource type="PackedScene" uid="uid://ck5hrql3y4n37" path="res://objects/spatial/interactable/teleporter.tscn" id="2_imnn2"]
+[ext_resource type="Script" path="res://scripts/actions/change_map_action.gd" id="4_amvt6"]
+
+[sub_resource type="Resource" id="Resource_k0tcl"]
+script = ExtResource("4_amvt6")
+scene_file = "res://objects/spatial/map/house_outside.tscn"
+spawn_index = 0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yw64f"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -43,6 +50,11 @@ size = Vector3(5, 3, 0.1)
 [node name="OutWall" type="CSGBox3D" parent="Main/Entrance"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1.5, -0.5)
 size = Vector3(0.1, 3, 5)
+
+[node name="Door" type="CSGBox3D" parent="Main/Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.46, 1, -2.25)
+size = Vector3(0.1, 2, 1)
+material = ExtResource("1_o6kjf")
 
 [node name="OuterWall" type="CSGCombiner3D" parent="Main"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
@@ -171,6 +183,15 @@ size = Vector3(4, 3, 0.1)
 
 [node name="Spawn1" type="Node3D" parent="Spawn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 0)
+
+[node name="Spawn2" type="Node3D" parent="Spawn"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 11, 0, -2.25)
+
+[node name="Interactable" type="Node3D" parent="."]
+
+[node name="Door" parent="Interactable" instance=ExtResource("2_imnn2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.4, 0, -2.225)
+action = SubResource("Resource_k0tcl")
 
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4r63f")
