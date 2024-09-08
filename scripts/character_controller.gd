@@ -22,8 +22,7 @@ func _ready():
 	Gameplay.connect("change_map_completed",action_callable)
 
 func _move_to_spawn_pos():
-	var spawn_pos_container:Node3D = get_tree().get_first_node_in_group("SpawnPoint")
-	var spawn_point:Node3D = spawn_pos_container.get_child(Gameplay.spawn_index)
+	var spawn_point = Gameplay.get_spawn_pos_node()
 	position = spawn_point.position
 	model_container.rotation.y = spawn_point.rotation.y
 	camera_controller.rotation.y = spawn_point.rotation.y
