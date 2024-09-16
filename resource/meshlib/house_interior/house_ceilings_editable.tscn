@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddl3crythrvh7"]
+
+[ext_resource type="Texture2D" uid="uid://bgyr7a45rny8e" path="res://textures/ceiling/Ceiling_Drop_Tiles_001/Ceiling_Drop_Tiles_001_basecolor.webp" id="1_15r12"]
+[ext_resource type="Texture2D" uid="uid://cv3xfmot4lnpd" path="res://textures/ceiling/Ceiling_Drop_Tiles_001/Ceiling_Drop_Tiles_001_ambientOcclusion.webp" id="2_0d7nw"]
+[ext_resource type="Texture2D" uid="uid://54bcocic2gqw" path="res://textures/ceiling/Ceiling_Drop_Tiles_001/Ceiling_Drop_Tiles_001_normal.webp" id="3_a2n57"]
+[ext_resource type="Texture2D" uid="uid://cps3tenod545s" path="res://textures/ceiling/Ceiling_Drop_Tiles_001/Ceiling_Drop_Tiles_001_roughness.webp" id="4_rrdl7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ac6sw"]
+albedo_texture = ExtResource("1_15r12")
+roughness_texture = ExtResource("4_rrdl7")
+normal_enabled = true
+normal_texture = ExtResource("3_a2n57")
+ao_enabled = true
+ao_texture = ExtResource("2_0d7nw")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_61s3b"]
+material = SubResource("StandardMaterial3D_ac6sw")
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_picse"]
+size = Vector3(1, 0.1, 1)
+
+[node name="HouseCeiling" type="Node3D"]
+
+[node name="Ceiling1" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_61s3b")
+
+[node name="Collider" type="StaticBody3D" parent="Ceiling1"]
+
+[node name="Collision" type="CollisionShape3D" parent="Ceiling1/Collider"]
+shape = SubResource("BoxShape3D_picse")

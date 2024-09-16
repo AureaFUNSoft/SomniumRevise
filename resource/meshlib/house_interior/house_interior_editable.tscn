@@ -1,0 +1,177 @@
+[gd_scene load_steps=32 format=3 uid="uid://clfsadqkv5kf8"]
+
+[ext_resource type="Texture2D" uid="uid://bqy2uh0qrg4q8" path="res://textures/floor/wood_herringbone_tiles_004/Substance_Graph_BaseColor.webp" id="1_qgjjt"]
+[ext_resource type="Texture2D" uid="uid://dbxpstxskf6q0" path="res://textures/floor/wood_herringbone_tiles_004/Substance_Graph_AmbientOcclusion.webp" id="2_rcxim"]
+[ext_resource type="Texture2D" uid="uid://2j5jpf5k86ps" path="res://textures/floor/wood_herringbone_tiles_004/Substance_Graph_Normal.webp" id="3_4ra0q"]
+[ext_resource type="Texture2D" uid="uid://foxg8hg60cjf" path="res://textures/floor/wood_herringbone_tiles_004/Substance_Graph_Roughness.webp" id="4_h82dw"]
+[ext_resource type="Texture2D" uid="uid://7v1cumyw1njq" path="res://textures/floor/tiles_0071/tiles_0071_color_1k.webp" id="5_wx0xm"]
+[ext_resource type="Texture2D" uid="uid://cfkl0dy460msk" path="res://textures/floor/tiles_0071/tiles_0071_ao_1k.webp" id="6_g5alb"]
+[ext_resource type="Texture2D" uid="uid://fm8snrt8oggk" path="res://textures/floor/tiles_0071/tiles_0071_normal_opengl_1k.webp" id="7_icscl"]
+[ext_resource type="Texture2D" uid="uid://fihop0y325fk" path="res://textures/floor/tiles_0071/tiles_0071_roughness_1k.webp" id="8_fq4ec"]
+[ext_resource type="Texture2D" uid="uid://cjtgcmc15yru8" path="res://textures/floor/ground_0009/ground_0009_color_1k.webp" id="9_ihx6k"]
+[ext_resource type="Texture2D" uid="uid://b8jnrbrsj0jqf" path="res://textures/floor/ground_0009/ground_0009_ao_1k.webp" id="10_jefuf"]
+[ext_resource type="Texture2D" uid="uid://ci0jh7hqpvq81" path="res://textures/floor/ground_0009/ground_0009_normal_opengl_1k.webp" id="11_gbm4w"]
+[ext_resource type="Texture2D" uid="uid://fbp1s282aujf" path="res://textures/floor/ground_0009/ground_0009_roughness_1k.webp" id="12_op75c"]
+[ext_resource type="Texture2D" uid="uid://d1b6qggjqhav8" path="res://textures/floor/Tiles002/Tiles002_4K_Color.webp" id="13_w2m80"]
+[ext_resource type="Texture2D" uid="uid://7t6t3cdwigh2" path="res://textures/floor/Tiles002/Tiles002_4K_NormalGL.webp" id="14_73fnt"]
+[ext_resource type="Texture2D" uid="uid://chegswvvo4nsr" path="res://textures/floor/Tiles002/Tiles002_4K_Roughness.webp" id="15_bhvov"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lwto"]
+albedo_texture = ExtResource("1_qgjjt")
+roughness_texture = ExtResource("4_h82dw")
+normal_enabled = true
+normal_texture = ExtResource("3_4ra0q")
+ao_enabled = true
+ao_texture = ExtResource("2_rcxim")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_valie"]
+material = SubResource("StandardMaterial3D_0lwto")
+size = Vector2(1, 1)
+center_offset = Vector3(0, 0.5, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0hm5"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tm2d"]
+albedo_texture = ExtResource("1_qgjjt")
+roughness_texture = ExtResource("4_h82dw")
+normal_enabled = true
+normal_texture = ExtResource("3_4ra0q")
+ao_enabled = true
+ao_texture = ExtResource("2_rcxim")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rjkto"]
+material = SubResource("StandardMaterial3D_5tm2d")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_41kca"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s54ou"]
+albedo_texture = ExtResource("5_wx0xm")
+metallic = 1.0
+roughness_texture = ExtResource("8_fq4ec")
+normal_enabled = true
+normal_texture = ExtResource("7_icscl")
+ao_enabled = true
+ao_texture = ExtResource("6_g5alb")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2y46f"]
+material = SubResource("StandardMaterial3D_s54ou")
+size = Vector2(1, 1)
+center_offset = Vector3(0, 0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bcpip"]
+albedo_texture = ExtResource("5_wx0xm")
+metallic = 1.0
+roughness_texture = ExtResource("8_fq4ec")
+normal_enabled = true
+normal_texture = ExtResource("7_icscl")
+ao_enabled = true
+ao_texture = ExtResource("6_g5alb")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_d0qax"]
+material = SubResource("StandardMaterial3D_bcpip")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwffs"]
+albedo_texture = ExtResource("9_ihx6k")
+roughness_texture = ExtResource("12_op75c")
+normal_enabled = true
+normal_texture = ExtResource("11_gbm4w")
+ao_enabled = true
+ao_texture = ExtResource("10_jefuf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_84grg"]
+material = SubResource("StandardMaterial3D_hwffs")
+size = Vector2(1, 1)
+center_offset = Vector3(0, 0.45, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awn33"]
+albedo_texture = ExtResource("13_w2m80")
+roughness_texture = ExtResource("15_bhvov")
+normal_enabled = true
+normal_texture = ExtResource("14_73fnt")
+ao_texture = ExtResource("2_rcxim")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_trv63"]
+material = SubResource("StandardMaterial3D_awn33")
+size = Vector2(1, 1)
+center_offset = Vector3(0, 0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cj0xp"]
+albedo_texture = ExtResource("13_w2m80")
+roughness_texture = ExtResource("15_bhvov")
+normal_enabled = true
+normal_texture = ExtResource("14_73fnt")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_5e7nq"]
+material = SubResource("StandardMaterial3D_cj0xp")
+
+[node name="HouseInterior" type="Node3D"]
+
+[node name="FloorWoodPlane" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_valie")
+
+[node name="Collider" type="StaticBody3D" parent="FloorWoodPlane"]
+
+[node name="Collision" type="CollisionShape3D" parent="FloorWoodPlane/Collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_c0hm5")
+
+[node name="FloorWoodBlock" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+mesh = SubResource("BoxMesh_rjkto")
+
+[node name="Collider" type="StaticBody3D" parent="FloorWoodBlock"]
+
+[node name="Collision" type="CollisionShape3D" parent="FloorWoodBlock/Collider"]
+shape = SubResource("BoxShape3D_41kca")
+
+[node name="FloorTiles1Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+mesh = SubResource("PlaneMesh_2y46f")
+
+[node name="Collider" type="StaticBody3D" parent="FloorTiles1Plane"]
+
+[node name="Collision" type="CollisionShape3D" parent="FloorTiles1Plane/Collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_c0hm5")
+
+[node name="FloorTiles1Block" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1.5)
+mesh = SubResource("BoxMesh_d0qax")
+
+[node name="Collider" type="StaticBody3D" parent="FloorTiles1Block"]
+
+[node name="Collision" type="CollisionShape3D" parent="FloorTiles1Block/Collider"]
+shape = SubResource("BoxShape3D_41kca")
+
+[node name="FloorGrassPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+mesh = SubResource("PlaneMesh_84grg")
+
+[node name="Collider" type="StaticBody3D" parent="FloorGrassPlane"]
+
+[node name="Collision" type="CollisionShape3D" parent="FloorGrassPlane/Collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_c0hm5")
+
+[node name="FloorTiles2Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 0)
+mesh = SubResource("PlaneMesh_trv63")
+
+[node name="Collider" type="StaticBody3D" parent="FloorTiles2Plane"]
+
+[node name="Collision" type="CollisionShape3D" parent="FloorTiles2Plane/Collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_c0hm5")
+
+[node name="FloorTiles2Block" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 1.5)
+mesh = SubResource("BoxMesh_5e7nq")
+
+[node name="Collider" type="StaticBody3D" parent="FloorTiles2Block"]
+
+[node name="Collision" type="CollisionShape3D" parent="FloorTiles2Block/Collider"]
+shape = SubResource("BoxShape3D_41kca")

@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://b3g2wii63os0e"]
+
+[ext_resource type="Texture2D" uid="uid://b1tlvml2r5j5v" path="res://textures/walls/Wallpaper001A/Wallpaper001A_4K_Color.webp" id="1_j4w5n"]
+[ext_resource type="Texture2D" uid="uid://blyv3h56k60kq" path="res://textures/walls/Wallpaper001A/Wallpaper001A_4K_NormalGL.webp" id="2_wsekn"]
+[ext_resource type="Texture2D" uid="uid://ctnt0qvp2o0n" path="res://textures/walls/Wallpaper001A/Wallpaper001A_4K_Roughness.webp" id="3_8uvui"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlx6s"]
+albedo_texture = ExtResource("1_j4w5n")
+roughness_texture = ExtResource("3_8uvui")
+normal_enabled = true
+normal_texture = ExtResource("2_wsekn")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ik3li"]
+material = SubResource("StandardMaterial3D_hlx6s")
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ivv40"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkxih"]
+albedo_texture = ExtResource("1_j4w5n")
+roughness_texture = ExtResource("3_8uvui")
+normal_enabled = true
+normal_texture = ExtResource("2_wsekn")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_21ud0"]
+material = SubResource("StandardMaterial3D_bkxih")
+size = Vector3(0.6, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1aabg"]
+size = Vector3(0.6, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ksu0"]
+material = SubResource("StandardMaterial3D_hlx6s")
+size = Vector3(0.55, 1, 0.55)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73ecl"]
+size = Vector3(0.55, 1, 0.55)
+
+[node name="HouseWalls" type="Node3D"]
+
+[node name="WallPaper" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ik3li")
+
+[node name="Collider" type="StaticBody3D" parent="WallPaper"]
+
+[node name="Collision" type="CollisionShape3D" parent="WallPaper/Collider"]
+shape = SubResource("BoxShape3D_ivv40")
+
+[node name="HalfWallPaper" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+mesh = SubResource("BoxMesh_21ud0")
+
+[node name="Collider" type="StaticBody3D" parent="HalfWallPaper"]
+
+[node name="Collision" type="CollisionShape3D" parent="HalfWallPaper/Collider"]
+shape = SubResource("BoxShape3D_1aabg")
+
+[node name="CornerWallPaper" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh = SubResource("BoxMesh_6ksu0")
+
+[node name="Collider" type="StaticBody3D" parent="CornerWallPaper"]
+
+[node name="Collision" type="CollisionShape3D" parent="CornerWallPaper/Collider"]
+shape = SubResource("BoxShape3D_73ecl")
